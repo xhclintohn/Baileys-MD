@@ -9,6 +9,7 @@ export interface GroupMetadata {
     id: string;
     owner: string | undefined;
     subject: string;
+    addressingMode: "pn" | "lid";
     /** group subject owner */
     subjectOwner?: string;
     /** group subject modification date */

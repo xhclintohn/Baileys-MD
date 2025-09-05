@@ -25,6 +25,10 @@ export declare const makeChatsSocket: (config: SocketConfig) => {
         setAt: Date;
     } | undefined>;
     updateProfilePicture: (jid: string, content: WAMediaUpload) => Promise<void>;
+    getLidUser: (jid: string) => Promise<{
+    	lid: string
+        id: string
+    }[] | undefined>
     removeProfilePicture: (jid: string) => Promise<void>;
     updateProfileStatus: (status: string) => Promise<void>;
     updateProfileName: (name: string) => Promise<void>;

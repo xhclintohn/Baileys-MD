@@ -21,6 +21,7 @@ export declare const makeMessagesSocket: (config: SocketConfig) => {
     fetchPrivacySettings: (force?: boolean) => Promise<{
         [_: string]: string;
     }>;
+    sendPeerDataOperationMessage: (pdoMessage: proto.Message.IPeerDataOperationRequestMessage) => Promise<string>;
     updateMediaMessage: (message: proto.IWebMessageInfo) => Promise<proto.IWebMessageInfo>;
     sendMessage: (jid: string, content: AnyMessageContent, options?: MiscMessageGenerationOptions) => Promise<proto.WebMessageInfo | undefined>;
     subscribeNewsletterUpdates: (jid: string) => Promise<{
@@ -83,9 +84,10 @@ export declare const makeMessagesSocket: (config: SocketConfig) => {
     presenceSubscribe: (toJid: string, tcToken?: Buffer | undefined) => Promise<void>;
     profilePictureUrl: (jid: string, type?: "image" | "preview", timeoutMs?: number | undefined) => Promise<string | undefined>;
     onWhatsApp: (...jids: string[]) => Promise<{
-        exists: boolean;
         jid: string;
-    }[]>;
+        exists: unknown;
+        lid: unknown;
+    }[] | undefined>;
     fetchBlocklist: () => Promise<string[]>;
     fetchStatus: (jid: string) => Promise<{
         status: string | undefined;
